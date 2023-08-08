@@ -23,10 +23,10 @@ class SharpImageResizer {
 
   async resizeAndSendImage(req: Request, res: Response): Promise<void> {
     try {
-      const { url, width, height } = req.query;
+      const { filename, width, height } = req.query; 
 
       // Check for missing parameters
-      if (!url || !width || !height) {
+      if (!filename || !width || !height) {
         res.status(400).send('Missing filename, height, or width.');
         return;
       }
@@ -40,12 +40,12 @@ class SharpImageResizer {
       }
 
       // Construct the full path of the resized image
-      const imageFilename = path.basename(url as string);
+      const imageFilename = path.basename(filename as string); 
       const outputDir = path.join(__dirname, '../../assets/images/resized');
       const resizedImagePath = path.join(outputDir, `resized-${imageFilename}`);
 
       // Resize the image
-      await this.resizeImage(url as string, resizedImagePath, parsedWidth, parsedHeight);
+      await this.resizeImage(filename as string, resizedImagePath, parsedWidth, parsedHeight); 
 
       // Set the content type to 'image/jpeg'
       res.type('image/jpeg');
@@ -60,4 +60,3 @@ class SharpImageResizer {
 }
 
 export default new SharpImageResizer();
-

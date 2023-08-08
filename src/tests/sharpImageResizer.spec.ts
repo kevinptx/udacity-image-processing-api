@@ -11,14 +11,12 @@ describe('sharpImageResizer', () => {
     const resizedImagePath = path.join(outputDir, 'fjord-200x200.jpg');
 
     beforeAll(() => {
-        // Create the output directory if it doesn't exist
         if (!fs.existsSync(outputDir)) {
             fs.mkdirSync(outputDir, { recursive: true });
         }
     });
 
     afterEach(() => {
-        // Clean up the resized image file if it was created during the test
         if (fs.existsSync(resizedImagePath)) {
             fs.unlinkSync(resizedImagePath);
         }
@@ -31,8 +29,8 @@ describe('sharpImageResizer', () => {
     });
 
     it('should resize an image', async () => {
-        const width = 100;
-        const height = 100;
+        const width = 200;
+        const height = 200;
 
         await SharpImageResizer.resizeImage(testImagePath, resizedImagePath, width, height);
 
@@ -44,13 +42,19 @@ describe('sharpImageResizer', () => {
     it('should respond with resized image', async () => {
         const response = await request(app)
             .get('/resize')
-            .query({ filename: 'fjord', width: 200, height: 200 });
+            .query({ filename: 'fjord.jpg', width: 200, height: 200 });
     
-        console.log('Response:', response);
+        console.log('Response Status:', response.status);
+        console.log('Response Type:', response.type);
+        console.log('Response Text:', response.text); // Add this line
     
+        // Make sure the response status is 200 and content type is image/jpeg
         expect(response.status).toBe(200);
         expect(response.type).toBe('image/jpeg');
     });
+    
+    
 
     // more test cases as needed
 });
+

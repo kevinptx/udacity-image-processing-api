@@ -19,6 +19,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // Resize image route
+// Resize image route
 app.get('/resize', async (req: Request, res: Response) => {
     const { filename, width, height } = req.query;
 
@@ -26,18 +27,14 @@ app.get('/resize', async (req: Request, res: Response) => {
         return res.status(400).send('Missing required parameters');
     }
 
-    const inputImagePath = path.join(__dirname, '..', 'assets', 'images', 'full', `${filename}.jpg`);
-    const outputImagePath = path.join(__dirname, '..', 'assets', 'images', 'resized', `${filename}-${width}x${height}.jpg`);
-
     try {
-        await sharpImageResizer.resizeImage(inputImagePath, outputImagePath, +width, +height);
-        const imageUrl = `/assets/images/resized/${filename}-${width}x${height}.jpg`;
-        res.status(200).send(imageUrl); // Send the URL as response
+        await sharpImageResizer.resizeAndSendImage(req, res);
     } catch (error) {
         console.error('Error processing image:', error);
         res.status(500).send('Error processing image');
     }
 });
+
 
 
 
