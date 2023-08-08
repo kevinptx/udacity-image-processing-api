@@ -1,19 +1,20 @@
-import express from 'express';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import express, { Request, Response, NextFunction } from 'express';
 
 class LoggerMiddleware {
-    private static formatLogMessage(req: express.Request): string {
+    private static formatLogMessage(req: Request): string {
         const { method, originalUrl, ip } = req;
         const timestamp = new Date().toISOString();
         return `[${timestamp}] ${method} ${originalUrl} from ${ip}`;
     }
 
-    static logRequest(req: express.Request, res: express.Response, next: express.NextFunction): void {
+    static logRequest(req: Request, res: Response, next: NextFunction): void {
         const logMessage = LoggerMiddleware.formatLogMessage(req);
         console.log(`Request: ${logMessage}`);
         next();
     }
 
-    static logResponse(req: express.Request, res: express.Response, next: express.NextFunction): void {
+    static logResponse(req: Request, res: Response, next: NextFunction): void {
         const logMessage = LoggerMiddleware.formatLogMessage(req);
         console.log(`Response: ${logMessage}`);
         next();

@@ -1,6 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import sharp from 'sharp';
+import request from 'supertest';
+import { app } from '../index'; 
 import SharpImageResizer from '../utilities/sharpImageResizer';
 
 describe('sharpImageResizer', () => {
@@ -38,4 +40,17 @@ describe('sharpImageResizer', () => {
         expect(metadata.width).toBe(width);
         expect(metadata.height).toBe(height);
     });
+
+    it('should respond with resized image', async () => {
+        const response = await request(app)
+            .get('/resize')
+            .query({ filename: 'fjord', width: 200, height: 200 });
+    
+        console.log('Response:', response);
+    
+        expect(response.status).toBe(200);
+        expect(response.type).toBe('image/jpeg');
+    });
+
+    // more test cases as needed
 });

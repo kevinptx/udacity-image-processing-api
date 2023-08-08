@@ -13,7 +13,11 @@ describe('LoggerMiddleware', () => {
             ip: '127.0.0.1',
         };
         res = {};
-        next = () => { }; // Create a dummy NextFunction
+        next = (error?: Error | string) => {
+            if (error) {
+                console.error('Error:', error);
+            }
+        };
     });
 
     afterEach(() => {
