@@ -1,6 +1,6 @@
 # Image Processing API
 
-This is a Node.js-based image processing API that provides functionality for resizing images and logging HTTP requests and responses. It is a simple Image Processing API built with Node.js, Express, and the Sharp image processing library. It provides endpoints to resize images and log HTTP requests and responses.
+This is a Node.js-based image processing API that provides functionality for resizing images and logging HTTP requests and responses. It is a simple Image Processing API built with Node.js, Express, and the Sharp image processing library. It provides endpoints to resize images and log HTTP requests and responses. It is the first project for Udacity's Full Stack JavaScript Developer Nanodegree.
 
 
 ## Table of Contents
