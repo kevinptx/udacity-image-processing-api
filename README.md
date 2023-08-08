@@ -31,28 +31,28 @@ This is a Node.js-based image processing API that provides functionality for res
 ### Installation
 
 1. Clone the repository:
-   ```sh
-   git clone https://github.com/kevinptx/udacity-image-processing-api
-   cd image-processing-api
-   npm install
-   ```
-   Install the required Node.js packages using npm:
-```sh
-npm install
-```
-Build the TypeScript files:
-```sh
-npm run build
-```
-Run the tests to ensure everything is set up correctly:
-```sh
-npm test
-```
-Start the server:
-```sh
-npm start
-```
-Open your web browser and navigate to http://localhost:3000 to access the Image Processing API.
+    ```sh
+    git clone https://github.com/kevinptx/udacity-image-processing-api
+    cd image-processing-api
+    npm install
+    ```
+2. Install the required Node.js packages using npm:
+    ```sh
+    npm install
+    ```
+3. Build the TypeScript files:
+    ```sh
+    npm run build
+    ```
+4. Run the tests to ensure everything is set up correctly:
+    ```sh
+    npm test
+    ```
+5. Start the server:
+    ```sh
+    npm start
+    ```
+6. Open your web browser and navigate to http://localhost:3000 to access the Image Processing API.
 
 ## Usage
 
