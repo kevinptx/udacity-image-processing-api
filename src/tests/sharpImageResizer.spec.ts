@@ -36,6 +36,4 @@ describe('sharpImageResizer', () => {
         expect(metadata.width).toBe(width);
         expect(metadata.height).toBe(height);
     });
-
-    // more test cases as needed
 });
