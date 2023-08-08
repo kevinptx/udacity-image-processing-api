@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import sharp = require('sharp');
+import sharp from 'sharp';
 import SharpImageResizer from '../utilities/sharpImageResizer';
 
 describe('sharpImageResizer', () => {
@@ -8,19 +8,21 @@ describe('sharpImageResizer', () => {
     const outputDir = path.join(__dirname, '../../assets/images/resized');
     const resizedImagePath = path.join(outputDir, 'fjord-200x200.jpg');
 
-
     beforeAll(() => {
-        // Create the test image if it doesn't exist
-        if (!fs.existsSync(testImagePath)) {
-            fs.writeFileSync(testImagePath, Buffer.from([0xFF, 0xD8, 0xFF]));
+        // Create the output directory if it doesn't exist
+        if (!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir, { recursive: true });
         }
     });
 
-    afterAll(() => {
-        // Clean up the test image and output directory
-        if (fs.existsSync(testImagePath)) {
-            fs.unlinkSync(testImagePath);
+    afterEach(() => {
+        // Clean up the resized image file if it was created during the test
+        if (fs.existsSync(resizedImagePath)) {
+            fs.unlinkSync(resizedImagePath);
         }
+    });
+
+    afterAll(() => {      
         if (fs.existsSync(outputDir)) {
             fs.rmdirSync(outputDir, { recursive: true });
         }
