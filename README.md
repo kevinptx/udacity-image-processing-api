@@ -64,7 +64,7 @@ height: The desired height of the resized image.
 
 The Image Processing API allows you to resize images by sending a GET request to the following endpoint:
 
-http://localhost:3000/resize?filename=&lt;image-filename&gt;&width=&lt;desired-width&gt;&height=&lt;desired-height&gt;
+http://localhost:3000/resize?filename=<image-filename>&width=<desired-width>&height=<desired-height>
 
 Replace `<image-filename>` with the name of the image file you want to resize (without the file extension), `<desired-width>` with the desired width of the resized image, and `<desired-height>` with the desired height of the resized image.
 
