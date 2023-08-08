@@ -46,7 +46,7 @@ describe('sharpImageResizer', () => {
     
         console.log('Response Status:', response.status);
         console.log('Response Type:', response.type);
-        console.log('Response Text:', response.text); // Add this line
+        console.log('Response Text:', response.text); 
     
         // Make sure the response status is 200 and content type is image/jpeg
         expect(response.status).toBe(200);
