@@ -1,17 +1,13 @@
 {
-    "compilerOptions": {
-        "target": "es2016",
-        "module": "CommonJS",
-        "outDir": "./dist",
-        "rootDir": "./src",
-        "strict": true,
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "skipLibCheck": true
-    },
-    "exclude": [
-        "node_modules",
-        "./dist",
-        "spec"
-    ]
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "CommonJS",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules", "./dist", "spec"]
 }

@@ -2,7 +2,6 @@
 
 This is a Node.js-based image processing API that provides functionality for resizing images and logging HTTP requests and responses. It is a simple Image Processing API built with Node.js, Express, and the Sharp image processing library. It provides endpoints to resize images and log HTTP requests and responses. It is the first project for Udacity's Full Stack JavaScript Developer Nanodegree.
 
-
 ## Table of Contents
 
 - [Features](#features)
@@ -12,7 +11,6 @@ This is a Node.js-based image processing API that provides functionality for res
 - [Endpoints](#endpoints)
 - [Tests](#tests)
 - [License](#license)
-
 
 ## Features
 
@@ -27,31 +25,30 @@ This is a Node.js-based image processing API that provides functionality for res
 - npm package manager
 - Git (for cloning the repository)
 
-
 ### Installation
 
 1. Clone the repository:
-    ```sh
-    git clone https://github.com/kevinptx/udacity-image-processing-api
-    cd image-processing-api
-    npm install
-    ```
+   ```sh
+   git clone https://github.com/kevinptx/udacity-image-processing-api
+   cd image-processing-api
+   npm install
+   ```
 2. Install the required Node.js packages using npm:
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 3. Build the TypeScript files:
-    ```sh
-    npm run build
-    ```
+   ```sh
+   npm run build
+   ```
 4. Run the tests to ensure everything is set up correctly:
-    ```sh
-    npm test
-    ```
+   ```sh
+   npm test
+   ```
 5. Start the server:
-    ```sh
-    npm start
-    ```
+   ```sh
+   npm start
+   ```
 6. Open your web browser and navigate to http://localhost:3000 to access the Image Processing API.
 
 ## Functionality
@@ -91,10 +88,7 @@ Run the tests using the following command:
 ```sh
 npm test
 ```
+
 ## License
 
 This project is licensed under the MIT License
-
-
-
-

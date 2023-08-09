@@ -1,42 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resized Image</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Resized Image</h1>
-    <img id="resizedImage" alt="Resized Image" src="">
-    
+    <img id="resizedImage" alt="Resized Image" src="" />
+
     <script>
-        async function loadResizedImage() {
-            const imgElement = document.getElementById('resizedImage');
-            const urlParams = new URLSearchParams(window.location.search);
-            const filename = urlParams.get('filename');
-            const width = urlParams.get('width');
-            const height = urlParams.get('height');
-            
-            if (filename && width && height) {
-                const imageUrl = `/resize?filename=${filename}&width=${width}&height=${height}`;
-                
-                try {
-                    const response = await fetch(imageUrl);
-                    
-                    if (response.ok) {
-                        imgElement.src = imageUrl;
-                    } else {
-                        imgElement.alt = "Error loading image";
-                    }
-                } catch (error) {
-                    imgElement.alt = "Error loading image";
-                }
+      async function loadResizedImage() {
+        const imgElement = document.getElementById('resizedImage');
+        const urlParams = new URLSearchParams(window.location.search);
+        const filename = urlParams.get('filename');
+        const width = urlParams.get('width');
+        const height = urlParams.get('height');
+
+        if (filename && width && height) {
+          const imageUrl = `/resize?filename=${filename}&width=${width}&height=${height}`;
+
+          try {
+            const response = await fetch(imageUrl);
+
+            if (response.ok) {
+              imgElement.src = imageUrl;
             } else {
-                imgElement.alt = "Image parameters missing or invalid";
+              imgElement.alt = 'Error loading image';
             }
+          } catch (error) {
+            imgElement.alt = 'Error loading image';
+          }
+        } else {
+          imgElement.alt = 'Image parameters missing or invalid';
         }
-        
-        window.addEventListener('DOMContentLoaded', loadResizedImage);
+      }
+
+      window.addEventListener('DOMContentLoaded', loadResizedImage);
     </script>
-</body>
+  </body>
 </html>

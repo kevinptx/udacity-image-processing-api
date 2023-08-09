@@ -4,7 +4,12 @@ import path from 'path';
 import { Request, Response } from 'express';
 
 class SharpImageResizer {
-  async resizeImage(inputPath: string, outputPath: string, width: number, height: number): Promise<void> {
+  async resizeImage(
+    inputPath: string,
+    outputPath: string,
+    width: number,
+    height: number
+  ): Promise<void> {
     console.log('Input Path:', inputPath);
     console.log('Output Path:', outputPath);
     console.log('Width:', width);
@@ -16,48 +21,52 @@ class SharpImageResizer {
     }
 
     // Resize and save the image
-    await sharp(inputPath)
-      .resize(width, height)
-      .toFile(outputPath);
+    await sharp(inputPath).resize(width, height).toFile(outputPath);
   }
 
   async resizeAndSendImage(req: Request, res: Response): Promise<void> {
-    console.log('Inside resizeAndSendImage function'); 
+    console.log('Inside resizeAndSendImage function');
 
     try {
-      const { filename, width, height } = req.query; 
+      const { filename, width, height } = req.query;
 
-     // Check for missing parameters
-if (!filename || !width || !height) {
-  console.error('Missing filename, height, or width.');
-  res.status(400).send('Missing filename, height, or width.');
-  return;
-}
+      // Check for missing parameters
+      if (!filename || !width || !height) {
+        console.error('Missing filename, height, or width.');
+        res.status(400).send('Missing filename, height, or width.');
+        return;
+      }
 
-
-
-   // Check for valid input
-const parsedWidth = parseInt(width as string);
-const parsedHeight = parseInt(height as string);
-if (isNaN(parsedWidth) || isNaN(parsedHeight)) {
-    console.error('Invalid Input for height or width.');
-    res.status(400).send('Invalid Input for height or width.');
-    return;
-}
-
+      // Check for valid input
+      const parsedWidth = Number(width);
+      const parsedHeight = Number(height);
+      if (isNaN(parsedWidth) || isNaN(parsedHeight)) {
+        console.error('Invalid Input for height or width.');
+        res.status(400).send('Invalid Input for height or width.');
+        return;
+      }
 
       // Construct the full path of the resized image
-      const inputImagePath = path.join(__dirname, '../../assets/images/full', filename as string);
+      const inputImagePath = path.join(
+        __dirname,
+        '../../assets/images/full',
+        filename as string
+      );
       const outputDir = path.join(__dirname, '../../assets/images/resized');
       const imageFilename = path.basename(filename as string);
       const resizedImagePath = path.join(outputDir, `resized-${imageFilename}`);
-      
+
       // Log the paths for debugging
       console.log('Input Image Path:', inputImagePath);
       console.log('Resized Image Path:', resizedImagePath);
 
       // Resize the image
-      await this.resizeImage(inputImagePath, resizedImagePath, parsedWidth, parsedHeight);
+      await this.resizeImage(
+        inputImagePath,
+        resizedImagePath,
+        parsedWidth,
+        parsedHeight
+      );
 
       // Set the content type to 'image/jpeg'
       res.type('image/jpeg');
