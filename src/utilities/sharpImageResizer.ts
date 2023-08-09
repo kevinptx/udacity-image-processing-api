@@ -22,22 +22,29 @@ class SharpImageResizer {
   }
 
   async resizeAndSendImage(req: Request, res: Response): Promise<void> {
+    console.log('Inside resizeAndSendImage function'); 
+
     try {
       const { filename, width, height } = req.query; 
 
-      // Check for missing parameters
-      if (!filename || !width || !height) {
-        res.status(400).send('Missing filename, height, or width.');
-        return;
-      }
+     // Check for missing parameters
+if (!filename || !width || !height) {
+  console.error('Missing filename, height, or width.');
+  res.status(400).send('Missing filename, height, or width.');
+  return;
+}
 
-      // Check for valid input
-      const parsedWidth = parseInt(width as string);
-      const parsedHeight = parseInt(height as string);
-      if (isNaN(parsedWidth) || isNaN(parsedHeight)) {
-        res.status(400).send('Invalid Input for height or width.');
-        return;
-      }
+
+
+   // Check for valid input
+const parsedWidth = parseInt(width as string);
+const parsedHeight = parseInt(height as string);
+if (isNaN(parsedWidth) || isNaN(parsedHeight)) {
+    console.error('Invalid Input for height or width.');
+    res.status(400).send('Invalid Input for height or width.');
+    return;
+}
+
 
       // Construct the full path of the resized image
       const inputImagePath = path.join(__dirname, '../../assets/images/full', filename as string);

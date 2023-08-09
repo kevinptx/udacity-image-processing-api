@@ -23,7 +23,14 @@ app.get('/resize', async (req: Request, res: Response) => {
     const { filename, width, height } = req.query;
 
     if (!filename || !width || !height) {
-        return res.status(400).send('Missing required parameters');
+        return res.status(400).send('Missing filename, height, or width.');
+    }
+
+    const parsedWidth = parseInt(width as string);
+    const parsedHeight = parseInt(height as string);
+
+    if (isNaN(parsedWidth) || isNaN(parsedHeight)) {
+        return res.status(400).send('Invalid Input for height or width.');
     }
 
     try {
@@ -33,9 +40,6 @@ app.get('/resize', async (req: Request, res: Response) => {
         res.status(500).send('Error processing image');
     }
 });
-
-
-
 
 // Handle other routes with a 404 Not Found error
 app.use((req: Request, res: Response) => {
