@@ -19,7 +19,6 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // Resize image route
-// Resize image route
 app.get('/resize', async (req: Request, res: Response) => {
     const { filename, width, height } = req.query;
 

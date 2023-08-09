@@ -58,17 +58,15 @@ This is a Node.js-based image processing API that provides functionality for res
 
 To resize an image, send a GET request to /resize with the following query parameters:
 
-url: The URL of the image you want to resize.
-width: The desired width of the resized image.
-height: The desired height of the resized image.
+- filename: The name of the image file you want to resize (including the file extension).
+- width: The desired width of the resized image.
+- height: The desired height of the resized image.
 
 The Image Processing API allows you to resize images by sending a GET request to the following endpoint:
 
 `http://localhost:3000/resize?filename=<image-filename>&width=<desired-width>&height=<desired-height>`
 
-Replace `<image-filename>` with the name of the image file you want to resize (without the file extension), `<desired-width>` with the desired width of the resized image, and `<desired-height>` with the desired height of the resized image.
-
-Example: http://localhost:3000/resize?filename=fjord&width=200&height=200
+Example: http://localhost:3000/resize?filename=fjord.jpg&width=200&height=200
 
 The resized image will be saved to disk on first access and then pulled from disk on subsequent access attempts. If the image processing fails or the image does not exist, an appropriate error message will be returned.
 
@@ -76,13 +74,15 @@ To view the logs of HTTP requests and responses, check the terminal where the se
 
 ## Endpoints
 
-GET /resize
-Query Parameters:
-url (string, required): The URL of the image to resize.
-width (number, required): The desired width of the resized image.
-height (number, required): The desired height of the resized image.
+### GET /resize
 
-Example: /resize?url=<image-url>&width=200&height=200
+Query Parameters:
+
+- filename (string, required): The name of the image file you want to resize (including the file extension).
+- width (number, required): The desired width of the resized image.
+- height (number, required): The desired height of the resized image.
+
+Example: `/resize?filename=fjord.jpg&width=200&height=200`
 
 ## Tests
 

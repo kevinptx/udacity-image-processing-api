@@ -40,12 +40,17 @@ class SharpImageResizer {
       }
 
       // Construct the full path of the resized image
-      const imageFilename = path.basename(filename as string); 
+      const inputImagePath = path.join(__dirname, '../../assets/images/full', filename as string);
       const outputDir = path.join(__dirname, '../../assets/images/resized');
+      const imageFilename = path.basename(filename as string);
       const resizedImagePath = path.join(outputDir, `resized-${imageFilename}`);
+      
+      // Log the paths for debugging
+      console.log('Input Image Path:', inputImagePath);
+      console.log('Resized Image Path:', resizedImagePath);
 
       // Resize the image
-      await this.resizeImage(filename as string, resizedImagePath, parsedWidth, parsedHeight); 
+      await this.resizeImage(inputImagePath, resizedImagePath, parsedWidth, parsedHeight);
 
       // Set the content type to 'image/jpeg'
       res.type('image/jpeg');

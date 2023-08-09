@@ -41,8 +41,8 @@ describe('sharpImageResizer', () => {
 
     it('should respond with resized image', async () => {
         const response = await request(app)
-            .get('/resize')
-            .query({ filename: 'fjord.jpg', width: 200, height: 200 });
+          .get('/resize')
+          .query({ filename: 'fjord.jpg', width: 200, height: 200 });
     
         console.log('Response Status:', response.status);
         console.log('Response Type:', response.type);
